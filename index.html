@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="description" content="elfantasmadedios.com — Biblioteca digital de guerra espiritual, lecturas y tecnología al servicio del evangelio en español.">
+  <meta name="description"
+    content="elfantasmadedios.com — Biblioteca digital de guerra espiritual, lecturas y tecnología al servicio del evangelio en español.">
   <title>elfantasmadedios.com | Biblioteca digital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #0b0f1a;
@@ -21,21 +25,35 @@
       --shadow: 0 25px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.03);
       color-scheme: dark;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: "Space Grotesk", "Newsreader", system-ui, -apple-system, sans-serif;
       background: radial-gradient(circle at 18% 20%, rgba(76, 224, 195, 0.12), transparent 28%),
-                  radial-gradient(circle at 80% 0%, rgba(240, 196, 91, 0.12), transparent 26%),
-                  var(--bg);
+        radial-gradient(circle at 80% 0%, rgba(240, 196, 91, 0.12), transparent 26%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       letter-spacing: 0.01em;
       min-height: 100vh;
       scroll-behavior: smooth;
     }
-    a { color: inherit; text-decoration: none; }
-    main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
     header {
       display: grid;
       gap: 18px;
@@ -47,15 +65,17 @@
       position: relative;
       overflow: hidden;
     }
+
     header::after {
       content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 65% 30%, rgba(76, 224, 195, 0.18), transparent 30%),
-                  radial-gradient(circle at 20% 80%, rgba(240, 196, 91, 0.18), transparent 28%);
+        radial-gradient(circle at 20% 80%, rgba(240, 196, 91, 0.18), transparent 28%);
       pointer-events: none;
       filter: blur(12px);
     }
+
     .eyebrow {
       font-size: 12px;
       letter-spacing: 0.2em;
@@ -65,6 +85,7 @@
       align-items: center;
       gap: 8px;
     }
+
     .eyebrow::before {
       content: "";
       width: 24px;
@@ -72,6 +93,7 @@
       background: var(--accent);
       border-radius: 999px;
     }
+
     h1 {
       font-family: "Newsreader", "Space Grotesk", serif;
       font-size: clamp(36px, 6vw, 56px);
@@ -79,12 +101,14 @@
       margin: 0;
       letter-spacing: -0.01em;
     }
+
     .lead {
       max-width: 640px;
       color: #d6ddf3;
       margin: 0;
       font-size: 16px;
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -92,6 +116,7 @@
       align-items: center;
       z-index: 1;
     }
+
     .cta {
       padding: 12px 16px;
       border-radius: 999px;
@@ -103,23 +128,30 @@
       cursor: pointer;
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease, border-color 0.2s ease;
     }
+
     .cta.primary {
       background: linear-gradient(120deg, var(--accent), #7ee6ff);
       color: #0a0f1a;
       box-shadow: 0 10px 40px rgba(76, 224, 195, 0.35);
     }
+
     .cta.secondary {
       border-color: var(--stroke);
       background: rgba(255, 255, 255, 0.03);
       color: var(--text);
     }
-    .cta:hover { transform: translateY(-1px); }
+
+    .cta:hover {
+      transform: translateY(-1px);
+    }
+
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 6px;
     }
+
     .pill {
       padding: 8px 12px;
       border-radius: 999px;
@@ -131,6 +163,7 @@
       gap: 8px;
       align-items: center;
     }
+
     section {
       margin-top: 28px;
       padding: 22px 20px;
@@ -139,18 +172,31 @@
       background: rgba(12, 18, 32, 0.75);
       box-shadow: var(--shadow);
     }
+
     h2 {
       margin: 0 0 8px;
       font-size: 24px;
       letter-spacing: -0.01em;
     }
-    .section-meta { color: var(--muted); margin: 0 0 16px; }
+
+    .section-meta {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
     .grid {
       display: grid;
       gap: 14px;
     }
-    .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    .grid.cols-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
     .card {
       border: 1px solid var(--stroke);
       border-radius: 14px;
@@ -161,6 +207,7 @@
       min-height: 100px;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
+
     .card::after {
       content: "";
       position: absolute;
@@ -168,10 +215,29 @@
       background: radial-gradient(circle at 75% 20%, rgba(76, 224, 195, 0.12), transparent 25%);
       pointer-events: none;
     }
-    .card:hover { transform: translateY(-2px); border-color: rgba(76, 224, 195, 0.35); }
-    .card h3 { margin: 0 0 6px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); }
-    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(76, 224, 195, 0.35);
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
     .tag {
       font-size: 12px;
       padding: 6px 10px;
@@ -180,12 +246,14 @@
       color: #dbe6ff;
       border: 1px solid var(--stroke);
     }
+
     .stat-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 10px;
       margin-top: 12px;
     }
+
     .stat {
       padding: 12px;
       border-radius: 12px;
@@ -193,7 +261,12 @@
       background: rgba(255, 255, 255, 0.03);
       text-align: center;
     }
-    .stat strong { display: block; font-size: 18px; }
+
+    .stat strong {
+      display: block;
+      font-size: 18px;
+    }
+
     .callout {
       display: grid;
       gap: 8px;
@@ -202,6 +275,7 @@
       border: 1px dashed rgba(76, 224, 195, 0.35);
       background: rgba(76, 224, 195, 0.06);
     }
+
     .search-row {
       display: flex;
       flex-wrap: wrap;
@@ -209,6 +283,7 @@
       align-items: center;
       margin-bottom: 12px;
     }
+
     .search-row input {
       flex: 1;
       min-width: 220px;
@@ -219,11 +294,13 @@
       color: var(--text);
       font-size: 15px;
     }
+
     .chips {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
     }
+
     .chip {
       padding: 8px 12px;
       border-radius: 999px;
@@ -233,21 +310,25 @@
       cursor: pointer;
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
+
     .chip.active {
       background: rgba(76, 224, 195, 0.12);
       color: var(--text);
       border-color: rgba(76, 224, 195, 0.45);
     }
+
     .resource-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 12px;
     }
+
     .resource-card {
       display: grid;
       gap: 8px;
       align-content: start;
     }
+
     .resource-meta {
       display: flex;
       gap: 8px;
@@ -255,6 +336,7 @@
       color: var(--muted);
       font-size: 13px;
     }
+
     .resource-link {
       display: inline-flex;
       align-items: center;
@@ -263,19 +345,23 @@
       font-weight: 600;
       font-size: 14px;
     }
+
     .timeline {
       display: grid;
       gap: 12px;
     }
+
     .timeline-step {
       border-left: 2px solid rgba(76, 224, 195, 0.35);
       padding-left: 12px;
       margin-left: 6px;
     }
+
     .audio-list {
       display: grid;
       gap: 12px;
     }
+
     .audio-item {
       display: flex;
       justify-content: space-between;
@@ -283,6 +369,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .footer {
       margin: 22px 0 0;
       padding: 16px 20px;
@@ -293,26 +380,38 @@
       display: grid;
       gap: 10px;
     }
+
     .small {
       font-size: 13px;
       color: var(--muted);
     }
-    .hidden { display: none !important; }
+
+    .hidden {
+      display: none !important;
+    }
+
     @media (min-width: 900px) {
-      header { padding: 32px 32px 38px; }
-      h1 { font-size: 62px; }
+      header {
+        padding: 32px 32px 38px;
+      }
+
+      h1 {
+        font-size: 62px;
+      }
     }
   </style>
 </head>
+
 <body>
   <main>
     <header>
       <div class="eyebrow">Biblioteca viva · Guerra espiritual + tecnología</div>
       <h1>elfantasmadedios.com</h1>
-      <p class="lead">Recursos curados en español para enfrentar la guerra espiritual, leer el evangelio con mirada científica y usar la tecnología sin ruido que distraiga la gloria de Cristo.</p>
+      <p class="lead">Este mundo es una simulación (matrix). Y existe una salida: Cristo. Nuestro Señor y
+        Salvador. </p>
       <div class="hero-actions">
-        <a class="cta primary" href="#recursos">Explorar recursos</a>
-        <a class="cta secondary" href="#comunidad">Recibir novedades</a>
+        <a class="cta primary" href="#recursos">Quiero Salvarme</a>
+        <a class="cta secondary" href="#comunidad">Quiero Ayudar</a>
       </div>
       <div class="hero-tags">
         <span class="pill">Audio + Texto</span>
@@ -321,67 +420,6 @@
         <span class="pill">Siempre sin anuncios</span>
       </div>
     </header>
-
-    <section id="colecciones">
-      <h2>Colecciones curadas</h2>
-      <p class="section-meta">Puertas de entrada sin ruido. Explora por enfoque y profundidad.</p>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Guerra espiritual</h3>
-          <p>Textos, oraciones y exégesis sobre la autoridad de Cristo, armadura de Dios y discernimiento.</p>
-          <div class="tag-row">
-            <span class="tag">Efesios 6</span>
-            <span class="tag">Intercesión</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Ciencia y fe</h3>
-          <p>Lecturas que dialogan entre el evangelio y la evidencia científica, sin perder la centralidad de Jesús.</p>
-          <div class="tag-row">
-            <span class="tag">Cosmos</span>
-            <span class="tag">Bioética</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Prácticas digitales</h3>
-          <p>Guías para usar dispositivos, IA y redes de forma santa, reduciendo distracción y ruido.</p>
-          <div class="tag-row">
-            <span class="tag">Higiene digital</span>
-            <span class="tag">Ayuno tecnológico</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Liturgia diaria</h3>
-          <p>Oraciones breves, lecturas y prompts para orar mientras trabajas con software.</p>
-          <div class="tag-row">
-            <span class="tag">Devocional</span>
-            <span class="tag">Audio</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Herramientas de estudio</h3>
-          <p>Plantillas, esquemas y mapas mentales listos para descargar y usar en reuniones o discipulado.</p>
-          <div class="tag-row">
-            <span class="tag">PDF</span>
-            <span class="tag">Miro/Notion</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Cultura y misión</h3>
-          <p>Ensayos sobre ética, cultura digital y proclamación en un mundo hiperconectado.</p>
-          <div class="tag-row">
-            <span class="tag">Misión urbana</span>
-            <span class="tag">Vocación</span>
-          </div>
-        </div>
-      </div>
-      <div class="stat-strip">
-        <div class="stat"><strong>+120</strong><span class="small">páginas y notas comentadas</span></div>
-        <div class="stat"><strong>+30</strong><span class="small">recursos de audio y video</span></div>
-        <div class="stat"><strong>100% limpio</strong><span class="small">sin anuncios ni ruido</span></div>
-        <div class="stat"><strong>Móvil</strong><span class="small">optimizado para pantalla pequeña</span></div>
-      </div>
-    </section>
 
     <section id="recursos">
       <h2>Recursos destacados</h2>
@@ -405,7 +443,8 @@
           </div>
           <h3>Armadura de Dios: guía práctica</h3>
           <p>Audio breve con notas descargables para vestir cada pieza en tu rutina diaria.</p>
-          <a class="resource-link" href="https://www.biblegateway.com/passage/?search=Efesios+6%3A10-18&version=RVR1960" target="_blank" rel="noopener">Abrir recurso ↗</a>
+          <a class="resource-link" href="https://www.biblegateway.com/passage/?search=Efesios+6%3A10-18&version=RVR1960"
+            target="_blank" rel="noopener">Abrir recurso ↗</a>
         </article>
         <article class="card resource-card" data-card data-tags="ciencia lectura">
           <div class="resource-meta">
@@ -423,7 +462,8 @@
           </div>
           <h3>Ayuno tecnológico 7 días</h3>
           <p>Plan de desintoxicación digital con oración, pausas y liturgias breves para la pantalla.</p>
-          <a class="resource-link" href="https://practicingtheway.org/finding-peace" target="_blank" rel="noopener">Abrir recurso ↗</a>
+          <a class="resource-link" href="https://practicingtheway.org/finding-peace" target="_blank"
+            rel="noopener">Abrir recurso ↗</a>
         </article>
         <article class="card resource-card" data-card data-tags="guerra lectura">
           <div class="resource-meta">
@@ -432,7 +472,8 @@
           </div>
           <h3>Discernimiento y voces</h3>
           <p>Cómo probar los espíritus en la era de la sobreinformación y las IA generativas.</p>
-          <a class="resource-link" href="https://www.gotquestions.org/Espanol/probar-los-espiritus.html" target="_blank" rel="noopener">Abrir recurso ↗</a>
+          <a class="resource-link" href="https://www.gotquestions.org/Espanol/probar-los-espiritus.html" target="_blank"
+            rel="noopener">Abrir recurso ↗</a>
         </article>
         <article class="card resource-card" data-card data-tags="digital audio">
           <div class="resource-meta">
@@ -441,7 +482,8 @@
           </div>
           <h3>Oraciones para programadores</h3>
           <p>10 oraciones cortas para sprints, despliegues y guardias nocturnas.</p>
-          <a class="resource-link" href="https://pray-as-you-go.org/es" target="_blank" rel="noopener">Abrir recurso ↗</a>
+          <a class="resource-link" href="https://pray-as-you-go.org/es" target="_blank" rel="noopener">Abrir recurso
+            ↗</a>
         </article>
         <article class="card resource-card" data-card data-tags="ciencia lectura">
           <div class="resource-meta">
@@ -455,79 +497,6 @@
       </div>
     </section>
 
-    <section id="plan">
-      <h2>Plan de lectura + práctica</h2>
-      <p class="section-meta">Pequeños pasos diarios para permanecer en Cristo mientras vives conectado.</p>
-      <div class="grid cols-2">
-        <div class="callout">
-          <strong>Ritmo semanal</strong>
-          <div class="timeline">
-            <div class="timeline-step">
-              <h3>Día 1 · Escuchar</h3>
-              <p>Oración guiada (10 min) + lectura de Efesios 6. Pregunta: ¿dónde cedo terreno?</p>
-            </div>
-            <div class="timeline-step">
-              <h3>Día 3 · Practicar</h3>
-              <p>Ayuno de notificaciones por 6 horas. Escribe lo que sientes y ora con ello.</p>
-            </div>
-            <div class="timeline-step">
-              <h3>Día 5 · Estudiar</h3>
-              <p>Lee un artículo de ciencia y fe. Anota cómo revela la gloria de Cristo.</p>
-            </div>
-            <div class="timeline-step">
-              <h3>Día 7 · Comunidad</h3>
-              <p>Comparte lo aprendido con alguien. Hazlo en persona antes que en redes.</p>
-            </div>
-          </div>
-        </div>
-        <div class="callout">
-          <strong>Prácticas rápidas</strong>
-          <ul>
-            <li>Minuto 1: respira, “Jesús, eres Señor de mis pantallas”.</li>
-            <li>Minuto 3: Revisa tu corazón antes que tu bandeja.</li>
-            <li>Minuto 5: Lee un salmo en voz alta y deja el teléfono lejos.</li>
-            <li>Modo avión intencional: 2 bloques al día para orar y pensar.</li>
-          </ul>
-          <div class="tag-row">
-            <span class="tag">Práctico</span>
-            <span class="tag">Respirable</span>
-            <span class="tag">Aplicable hoy</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="laboratorio">
-      <h2>Laboratorio: fe + tecnología</h2>
-      <p class="section-meta">Materiales para equipos creativos, iglesias y makers que quieren codificar con esperanza.</p>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Kit de ética digital</h3>
-          <p>Checklist descargable para revisar productos, privacidad y el impacto espiritual antes de lanzar.</p>
-          <div class="tag-row">
-            <span class="tag">Checklist</span>
-            <span class="tag">PDF</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Canvas de discipulado</h3>
-          <p>Plantilla editable (Notion/Miro) para acompañar a nuevos creyentes en línea.</p>
-          <div class="tag-row">
-            <span class="tag">Plantilla</span>
-            <span class="tag">Colaborativo</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Guía de comunicación limpia</h3>
-          <p>Principios para escribir newsletters, podcasts y código sin ruido ni ego.</p>
-          <div class="tag-row">
-            <span class="tag">Comunicación</span>
-            <span class="tag">Equipo</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="audio">
       <h2>Audioteca</h2>
       <p class="section-meta">Meditaciones breves para acompañar tus tareas diarias.</p>
@@ -537,7 +506,8 @@
             <h3>Vigilia en la noche</h3>
             <p class="small">Salmo 91 leído lentamente con silencios para orar.</p>
           </div>
-          <a class="resource-link" href="https://www.youtube.com/results?search_query=salmo+91+audio+español" target="_blank" rel="noopener">Escuchar ↗</a>
+          <a class="resource-link" href="https://www.youtube.com/results?search_query=salmo+91+audio+español"
+            target="_blank" rel="noopener">Escuchar ↗</a>
         </div>
         <div class="card audio-item" data-card data-tags="audio digital">
           <div>
@@ -551,34 +521,15 @@
             <h3>Asombro y diseño</h3>
             <p class="small">Contempla la creación: lectura de Génesis 1 con enfoque en vocación.</p>
           </div>
-          <a class="resource-link" href="https://www.biblegateway.com/audio/dramatized/rvr1960/Gen.1" target="_blank" rel="noopener">Escuchar ↗</a>
+          <a class="resource-link" href="https://www.biblegateway.com/audio/dramatized/rvr1960/Gen.1" target="_blank"
+            rel="noopener">Escuchar ↗</a>
         </div>
-      </div>
-    </section>
-
-    <section id="comunidad">
-      <h2>Comunidad y novedades</h2>
-      <p class="section-meta">Ingresa tu correo para recibir nuevos recursos y planes de lectura. Sin spam, sin anuncios.</p>
-      <form id="newsletter" class="grid cols-2" autocomplete="on">
-        <div>
-          <label class="small" for="email">Correo electrónico</label>
-          <input id="email" name="email" type="email" placeholder="tucorreo@example.com" required style="margin-top:6px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,0.04); color:var(--text); font-size:15px;">
-        </div>
-        <div style="display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap;">
-          <button class="cta primary" type="submit">Unirme</button>
-          <span class="small">Compartimos 1-2 correos al mes. Oramos por tu inbox.</span>
-        </div>
-        <div id="newsletterFeedback" class="small" aria-live="polite"></div>
-      </form>
-      <div class="callout" style="margin-top:14px;">
-        <strong>Visión</strong>
-        <p>Glorificar a Jesús al servir a la nueva generación de creyentes con recursos claros, bellos y sin ruido.</p>
       </div>
     </section>
 
     <footer class="footer">
-      <div>elfantasmadedios.com · Biblioteca digital para la gloria de Cristo.</div>
-      <div class="small">Compartir es bienvenido. Cita la fuente, ora con nosotros y cuida tu pantalla.</div>
+      <div>elfantasmadedios.com · Recursos digitales. Mapeando a Dios. El Programador Original.</div>
+      <div class="small">Busca primero el Reino de Los Cielos. Y todo se te será revelado.</div>
     </footer>
   </main>
 
@@ -620,4 +571,5 @@
     });
   </script>
 </body>
+
 </html>
