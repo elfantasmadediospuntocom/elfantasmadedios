@@ -295,6 +295,27 @@
       font-size: 15px;
     }
 
+    .newsletter-form {
+      display: grid;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .newsletter-feedback {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     .chips {
       display: flex;
       gap: 8px;
@@ -497,6 +518,32 @@
       </div>
     </section>
 
+    <section id="comunidad">
+      <h2>Comunidad y misión</h2>
+      <p class="section-meta">Comparte hallazgos, dona tiempo técnico o recibe avisos cuando publiquemos nuevos
+        recursos.</p>
+      <div class="grid cols-2">
+        <article class="card">
+          <h3>Comparte y colabora</h3>
+          <p>Envía enlaces, liturgias, audio o ideas para mejorar las herramientas.</p>
+          <div class="tag-row">
+            <span class="tag">Guerra espiritual</span>
+            <span class="tag">Apps</span>
+            <span class="tag">Audio</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Recibe avisos</h3>
+          <p>Suscríbete para enterarte cuando agreguemos recursos o abramos nuevas herramientas.</p>
+          <form id="newsletter" class="newsletter-form">
+            <input type="email" name="email" placeholder="tu@email.com" required>
+            <button type="submit" class="cta primary">Quiero enterarme</button>
+          </form>
+          <div id="newsletterFeedback" class="newsletter-feedback"></div>
+        </article>
+      </div>
+    </section>
+
     <section id="audio">
       <h2>Audioteca</h2>
       <p class="section-meta">Meditaciones breves para acompañar tus tareas diarias.</p>
@@ -562,13 +609,15 @@
 
     const newsletter = document.getElementById("newsletter");
     const feedback = document.getElementById("newsletterFeedback");
-    newsletter.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const email = newsletter.email.value.trim();
-      if (!email) return;
-      feedback.textContent = "Gracias. Te avisaremos cuando haya nuevos recursos.";
-      newsletter.reset();
-    });
+    if (newsletter && feedback) {
+      newsletter.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = newsletter.email.value.trim();
+        if (!email) return;
+        feedback.textContent = "Gracias. Te avisaremos cuando haya nuevos recursos.";
+        newsletter.reset();
+      });
+    }
   </script>
 </body>
 
