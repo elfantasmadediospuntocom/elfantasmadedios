@@ -224,6 +224,18 @@
       transform: translateY(-1px);
     }
 
+    .hero-layout {
+      display: grid;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
@@ -277,6 +289,63 @@
       margin-top: 8px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(10, 18, 32, 0.8));
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      isolation: isolate;
+      min-height: 260px;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.15);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-visual::before {
+      background: radial-gradient(70% 60% at 20% 25%, rgba(108, 136, 255, 0.3), transparent 55%),
+        radial-gradient(50% 50% at 80% 20%, rgba(242, 196, 93, 0.28), transparent 60%),
+        radial-gradient(60% 70% at 50% 90%, rgba(108, 240, 193, 0.25), transparent 55%);
+      mix-blend-mode: screen;
+    }
+
+    .hero-visual::after {
+      background: linear-gradient(180deg, rgba(5, 9, 18, 0.05), rgba(5, 9, 18, 0.35));
+    }
+
+    .hero-visual-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(5, 9, 18, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 13px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-visual-caption strong {
+      color: var(--text);
+      letter-spacing: 0.03em;
     }
 
     section {
@@ -739,18 +808,27 @@
 <body>
   <main>
     <header>
-      <div class="hero-grid">
-        <div class="eyebrow">Templo digital · Piedra angular: Cristo</div>
-        <h1>elfantasmadedios.com</h1>
-        <p class="lead">Ministerio Cristiano Digital. El mundo está terminando y hemos decidido morir en Gloria.
-          Nuestro Creador vino y Conquistó a la Muerte. ¡Fruta jugosa eres!
-          ¡Gloria al Rey del Universo! ¡Contigo hasta la muerte!
-        </p>
-        <p class="hero-note">Armadura puesta, mirada fija en el Programador Original del Universo.</p>
-        <div class="hero-actions">
-          <a class="cta primary" href="#recursos">Dame Evidencias de La Verdad</a>
-          <a class="cta secondary" href="#fundamentos">Guerra Espiritual Avanzada</a>
+      <div class="hero-layout">
+        <div class="hero-grid">
+          <div class="eyebrow">Templo digital · Piedra angular: Cristo</div>
+          <h1>elfantasmadedios.com</h1>
+          <p class="lead">Ministerio Cristiano Digital. El mundo está terminando y hemos decidido morir en Gloria.
+            Nuestro Creador vino y Conquistó a la Muerte. ¡Fruta jugosa eres!
+            ¡Gloria al Rey del Universo! ¡Contigo hasta la muerte!
+          </p>
+          <p class="hero-note">Armadura puesta, mirada fija en el Programador Original del Universo.</p>
+          <div class="hero-actions">
+            <a class="cta primary" href="#recursos">Dame Evidencias de La Verdad</a>
+            <a class="cta secondary" href="#fundamentos">Guerra Espiritual Avanzada</a>
+          </div>
         </div>
+        <figure class="hero-visual">
+          <img src="assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qvf7vaq9761drzd2hh.png"
+            alt="Visión épica: ángel máquina sagrado descendiendo con luz">
+          <figcaption class="hero-visual-caption">
+            <strong>Visión mecánica sagrada</strong> · Vigilante de gloria y justicia en la puerta del templo digital.
+          </figcaption>
+        </figure>
       </div>
       <div class="foundation-bar" aria-hidden="true"></div>
     </header>
@@ -761,46 +839,6 @@
       <div class="small">Busca primero el Reino de Los Cielos: Todo Te Será Revelado.</div>
     </footer>
   </main>
-
-  <script>
-    const searchInput = document.getElementById("search");
-    const chips = Array.from(document.querySelectorAll("[data-chip]"));
-    const cards = Array.from(document.querySelectorAll("[data-card]"));
-    let activeTag = "all";
-
-    function filterCards() {
-      const term = searchInput.value.trim().toLowerCase();
-      cards.forEach(card => {
-        const tags = (card.dataset.tags || "").toLowerCase();
-        const matchesTag = activeTag === "all" || tags.includes(activeTag);
-        const matchesTerm = !term || card.textContent.toLowerCase().includes(term);
-        card.classList.toggle("hidden", !(matchesTag && matchesTerm));
-      });
-    }
-
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        activeTag = chip.dataset.chip;
-        filterCards();
-      });
-    });
-
-    searchInput.addEventListener("input", filterCards);
-
-    const newsletter = document.getElementById("newsletter");
-    const feedback = document.getElementById("newsletterFeedback");
-    if (newsletter && feedback) {
-      newsletter.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const email = newsletter.email.value.trim();
-        if (!email) return;
-        feedback.textContent = "Gracias. Te avisaremos cuando haya nuevos recursos.";
-        newsletter.reset();
-      });
-    }
-  </script>
 </body>
 
 </html>
