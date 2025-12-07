@@ -762,45 +762,6 @@
     </footer>
   </main>
 
-  <script>
-    const searchInput = document.getElementById("search");
-    const chips = Array.from(document.querySelectorAll("[data-chip]"));
-    const cards = Array.from(document.querySelectorAll("[data-card]"));
-    let activeTag = "all";
-
-    function filterCards() {
-      const term = searchInput.value.trim().toLowerCase();
-      cards.forEach(card => {
-        const tags = (card.dataset.tags || "").toLowerCase();
-        const matchesTag = activeTag === "all" || tags.includes(activeTag);
-        const matchesTerm = !term || card.textContent.toLowerCase().includes(term);
-        card.classList.toggle("hidden", !(matchesTag && matchesTerm));
-      });
-    }
-
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        activeTag = chip.dataset.chip;
-        filterCards();
-      });
-    });
-
-    searchInput.addEventListener("input", filterCards);
-
-    const newsletter = document.getElementById("newsletter");
-    const feedback = document.getElementById("newsletterFeedback");
-    if (newsletter && feedback) {
-      newsletter.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const email = newsletter.email.value.trim();
-        if (!email) return;
-        feedback.textContent = "Gracias. Te avisaremos cuando haya nuevos recursos.";
-        newsletter.reset();
-      });
-    }
-  </script>
 </body>
 
 </html>
