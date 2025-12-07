@@ -329,13 +329,6 @@
 
     <section>
       <h2>Recursos Descargables</h2>
-      <p class="muted">Coloca tus archivos (PDF, DOC o TXT) en <code>assets/text/</code> y agrega el enlace en el
-        arreglo para que aparezcan aquí.</p>
-      <div class="resource-grid" id="resourceGrid"></div>
-    </section>
-
-    <section>
-      <h2>Textos de batalla</h2>
       <p class="muted">Escribe el texto que quieras mostrar y sube el .txt a <code>assets/text/</code>. Pega también el
         enlace de descarga.</p>
       <div class="text-grid" id="textGrid"></div>
@@ -353,8 +346,28 @@
     ];
 
     const texts = [
-      // Ejemplo: { title: "Ataques Durante el Sueño", description: "Guía rápida para cortar pesadillas y opresión nocturna.", body: "Pega aquí el texto que quieras mostrar.\n\nMantén los párrafos separados por líneas en blanco para mejor lectura.", href: "assets/text/ataques_durante_el_sueno.txt" },
-      { title: "Pronto", description: "Añade tus .txt a assets/text y pega el cuerpo y el enlace aquí.", body: "Pega aquí tu texto completo.", href: "" }
+      {
+        title: "Oración para aniquilar ataques demoníacos durante el sueño",
+        description: "Oración completa para protección espiritual nocturna.",
+        body: `
+Oración para aniquilar ataques demoniacos durante el sueño.
+La siguiente oración está diseñada para la aniquilación total de acceso a fuerzas negativas que busquen debilitar nuestra conexión con Jesús, Dios y El Espíritu Santo.
+
+Señor Jesucristo, te doy gracias por haberme dado un cuerpo y una conciencia limpia, como la del la niña/niño que fui.
+Yo, un hombre/mujer adulto/a solicito en nombre tuyo, Jesús, mi Señor y Salvador, se me conceda acceso total y definitivo a mi inocencia original para moverme en ti sin miedo del terror y confusión que cualquier fuerza que no es parte de tu Reino proyecte sobre mi percepción. Solicito total protección y control sobre mi sistema nervioso y el cuerpo que has creado para poder descansar en tu verdad, incluso cuando mi conciencia se encuentra descansando e imaginando.
+
+Dios, Padre Todopoderoso, te expreso mi profundo respeto, temor y obediencia.
+Señor, así como un padre disciplina a su hijo con amor e inocencia, solicito que tu disciplina y sus formas expresen tu naturaleza original, no lo contrario.
+Que sea tu voluntad la que se presente y que cualquier tribulación que se presente en mi sueño me acerque más a ti, no lo contrario. Úsame como quieras y como te parezca, solo soy polvo. Tu polvo.
+Gloria a tu Reino: del bien, puro, divino, tranquilo.
+
+Finalmente, te pido Señor, seas misericordioso conmigo, un/a hijo/a del lodo, y comandes a tus ángeles más fuertes, sabios y poderosos a proteger mi conciencia y mi cuerpo, sobre todo al momento de dormir y descansar.
+
+Tuyo es el Reino, el Poder y la Gloria, por siempre Señor.
+AMÉN.
+    `,
+        href: "/Users/ivan/Documents/Code/elfantasmadedios/assets/text/Ataques Durante el Sueño.rtf" // pon aquí tu archivo .txt si luego lo subes
+      }
     ];
 
     function renderDownloads(list) {
