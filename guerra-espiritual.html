@@ -207,6 +207,42 @@
       font-size: 14px;
     }
 
+    .text-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      margin-top: 14px;
+    }
+
+    .text-card {
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 16px;
+      background: linear-gradient(145deg, rgba(19, 31, 53, 0.92), rgba(12, 19, 36, 0.95));
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      min-height: 220px;
+    }
+
+    .text-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .text-body {
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      color: var(--muted);
+      min-height: 120px;
+    }
+
     .tag {
       display: inline-flex;
       align-items: center;
@@ -293,21 +329,35 @@
 
     <section>
       <h2>Recursos Descargables</h2>
-      <p class="muted">Coloca tus archivos en <code>assets/</code> y agrega el enlace en el arreglo para que aparezcan
-        aquí.</p>
+      <p class="muted">Coloca tus archivos en <code>assets/descargas/</code> y agrega el enlace en el arreglo para que
+        aparezcan aquí.</p>
       <div class="resource-grid" id="resourceGrid"></div>
+    </section>
+
+    <section>
+      <h2>Textos de batalla</h2>
+      <p class="muted">Escribe el texto que quieras mostrar y sube el .txt a <code>assets/textos/</code>. Pega también
+        el enlace de descarga.</p>
+      <div class="text-grid" id="textGrid"></div>
     </section>
   </main>
 
   <script>
     const resourceGrid = document.getElementById("resourceGrid");
-    const resources = [
-      // Ejemplo: { title: "Oración de Cobertura", description: "Protégete antes de cada misión.", href: "assets/oracion_cobertura.pdf" },
-      // Ejemplo: { title: "Manual de Guerra Digital", description: "Lineamientos tácticos para evangelismo online.", href: "assets/manual_guerra_digital.pdf" },
-      { title: "En breve", description: "Añade tus PDFs o textos a la carpeta assets y enlázalos aquí.", href: "" }
+    const textGrid = document.getElementById("textGrid");
+
+    const downloads = [
+      // Ejemplo: { title: "Oración de Cobertura", description: "Protégete antes de cada misión.", href: "assets/descargas/oracion_cobertura.pdf" },
+      // Ejemplo: { title: "Manual de Guerra Digital", description: "Lineamientos tácticos para evangelismo online.", href: "assets/descargas/manual_guerra_digital.pdf" },
+      { title: "En breve", description: "Añade tus PDFs a assets/descargas y enlázalos aquí.", href: "" }
     ];
 
-    function renderResources(list) {
+    const texts = [
+      // Ejemplo: { title: "Ataques Durante el Sueño", description: "Guía rápida para cortar pesadillas y opresión nocturna.", body: "Pega aquí el texto que quieras mostrar.\n\nMantén los párrafos separados por líneas en blanco para mejor lectura.", href: "assets/textos/ataques_durante_el_sueno.txt" },
+      { title: "Pronto", description: "Añade tus .txt a assets/textos y pega el cuerpo y el enlace aquí.", body: "Pega aquí tu texto completo.", href: "" }
+    ];
+
+    function renderDownloads(list) {
       if (!resourceGrid) return;
       resourceGrid.innerHTML = "";
       list.forEach((item) => {
@@ -324,7 +374,25 @@
       });
     }
 
-    renderResources(resources);
+    function renderTexts(list) {
+      if (!textGrid) return;
+      textGrid.innerHTML = "";
+      list.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "text-card";
+        const hasLink = Boolean(item.href);
+        card.innerHTML = `
+          <h3>${item.title}</h3>
+          <p class="muted">${item.description}</p>
+          <div class="text-body">${(item.body || "").replace(/\n/g, "<br>")}</div>
+          <a class="download ${hasLink ? "" : "disabled"}" ${hasLink ? `href="${item.href}" download` : ""}>${hasLink ? "Descargar .txt" : "Sube el archivo .txt"}</a>
+        `;
+        textGrid.appendChild(card);
+      });
+    }
+
+    renderDownloads(downloads);
+    renderTexts(texts);
   </script>
 </body>
 
