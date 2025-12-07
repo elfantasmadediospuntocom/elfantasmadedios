@@ -280,45 +280,84 @@
     }
 
     .gallery {
-      margin-top: 28px;
+      margin-top: 36px;
       padding: 0;
-      border-radius: 20px;
-      background: linear-gradient(145deg, rgba(11, 19, 35, 0.92), rgba(8, 14, 26, 0.94));
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(12, 18, 32, 0.95), rgba(5, 9, 18, 0.94));
       border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
       overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .gallery::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(70% 80% at 20% 20%, rgba(108, 240, 193, 0.08), transparent 50%),
+        radial-gradient(90% 80% at 80% 15%, rgba(108, 136, 255, 0.08), transparent 55%);
+      pointer-events: none;
     }
 
     .gallery-shell {
       position: relative;
-      padding: 12px 52px;
-    }
-
-    .gallery-track {
+      padding: 22px;
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(280px, 1fr);
       gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding-bottom: 6px;
-      scrollbar-width: none;
+      min-height: clamp(420px, 68vh, 820px);
+      z-index: 1;
     }
 
-    .gallery-track::-webkit-scrollbar {
-      display: none;
+    .gallery-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-top .caption {
+      margin: 0;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+    }
+
+    .gallery-top-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .gallery-stage {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 70% at 85% 10%, rgba(108, 136, 255, 0.18), transparent 60%),
+        radial-gradient(80% 80% at 20% 85%, rgba(108, 240, 193, 0.16), transparent 60%),
+        linear-gradient(160deg, rgba(8, 12, 22, 0.95), rgba(5, 9, 18, 0.92));
+      height: clamp(360px, 62vh, 760px);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
     }
 
     .gallery-slide {
-      position: relative;
-      border-radius: 14px;
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
       overflow: hidden;
-      scroll-snap-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.9s ease, transform 1.1s ease;
       background: #0c1424;
-      aspect-ratio: 16 / 9;
+      filter: drop-shadow(0 25px 70px rgba(0, 0, 0, 0.65));
+    }
+
+    .gallery-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
     }
 
     .gallery-slide img {
@@ -326,62 +365,129 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: saturate(1.08);
+      filter: saturate(1.08) contrast(1.05);
+    }
+
+    .gallery-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 9, 18, 0.05), rgba(5, 9, 18, 0.45) 55%, rgba(5, 9, 18, 0.75));
+      pointer-events: none;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-end;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 18px;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.01em;
+      z-index: 2;
+    }
+
+    .gallery-caption span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(5, 9, 18, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    .gallery-counter {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(5, 9, 18, 0.62);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 3;
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
     }
 
     .gallery-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(5, 9, 18, 0.6);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: radial-gradient(circle at 30% 30%, rgba(108, 240, 193, 0.22), rgba(5, 9, 18, 0.78));
       color: var(--text);
       display: grid;
       place-items: center;
       cursor: pointer;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.48);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
     }
 
     .gallery-btn:hover {
-      transform: translateY(-50%) scale(1.05);
-      background: rgba(12, 20, 35, 0.8);
-      border-color: rgba(108, 240, 193, 0.4);
-    }
-
-    .gallery-btn.prev {
-      left: 10px;
-    }
-
-    .gallery-btn.next {
-      right: 10px;
+      transform: translateY(-1px) scale(1.03);
+      border-color: rgba(108, 240, 193, 0.6);
+      box-shadow: 0 18px 60px rgba(108, 240, 193, 0.18);
     }
 
     .gallery-dots {
+      flex: 1;
       display: flex;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 0 18px;
+      gap: 10px;
+      padding: 0 8px;
     }
 
     .gallery-dot {
-      width: 8px;
-      height: 8px;
+      --fill: 0%;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      position: relative;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .gallery-dot::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 999px;
+      background: conic-gradient(var(--accent), var(--accent) var(--fill), rgba(255, 255, 255, 0) var(--fill));
+      opacity: 0.85;
+      transform: scale(0.9);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      pointer-events: none;
     }
 
     .gallery-dot.active {
-      background: var(--accent);
-      border-color: rgba(108, 240, 193, 0.7);
+      border-color: rgba(108, 240, 193, 0.65);
+      box-shadow: 0 10px 28px rgba(108, 240, 193, 0.25);
+      transform: scale(1.04);
+    }
+
+    .gallery-dot.active::after {
       transform: scale(1.05);
+      opacity: 1;
     }
 
     section {
@@ -862,36 +968,22 @@
 
     <section class="gallery" aria-label="Galería">
       <div class="gallery-shell">
-        <button class="gallery-btn prev" type="button" aria-label="Anterior"><</button>
-        <div class="gallery-track" id="galleryTrack">
-          <div class="gallery-slide">
-            <img src="assets/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3panhew6tcsz0b66f9xe4.png"
-              alt="Galería 1">
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qvf7vaq9761drzd2hh.png"
-              alt="Galería 2">
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3meer5r13as2n7vx95c.png"
-              alt="Galería 3">
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y8fygvyp46qw5gy2x6.png"
-              alt="Galería 4">
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/20251202_1247_Divine Mech Creation_simple_compose_01kbg2nstneztr710ackrrfz32.png"
-              alt="Galería 5">
-          </div>
-          <div class="gallery-slide">
-            <img src="assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e70eap87vjadyevsvw6.png"
-              alt="Galería 6">
+        <div class="gallery-top">
+          <p class="caption">Estandarte Cinemático</p>
+          <div class="gallery-top-meta">
+            <span class="pill">Auto · 7s</span>
+            <span class="pill">Carpeta assets en vivo</span>
           </div>
         </div>
-        <button class="gallery-btn next" type="button" aria-label="Siguiente">></button>
+        <div class="gallery-stage" id="galleryStage">
+          <div class="gallery-counter" id="galleryCounter">—</div>
+        </div>
+        <div class="gallery-controls">
+          <button class="gallery-btn prev" type="button" aria-label="Anterior"><</button>
+          <div class="gallery-dots" id="galleryDots"></div>
+          <button class="gallery-btn next" type="button" aria-label="Siguiente">></button>
+        </div>
       </div>
-      <div class="gallery-dots" id="galleryDots"></div>
     </section>
 
     <footer class="footer">
@@ -902,49 +994,198 @@
   </main>
 
   <script>
-    const galleryTrack = document.getElementById("galleryTrack");
+    const galleryStage = document.getElementById("galleryStage");
     const galleryDots = document.getElementById("galleryDots");
-    const gallerySlides = galleryTrack ? Array.from(galleryTrack.querySelectorAll(".gallery-slide")) : [];
     const btnPrev = document.querySelector(".gallery-btn.prev");
     const btnNext = document.querySelector(".gallery-btn.next");
+    const galleryCounter = document.getElementById("galleryCounter");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const AUTO_DELAY = prefersReducedMotion ? 11000 : 7200;
+    const GITHUB_ASSET_ENDPOINT = "https://api.github.com/repos/elfantasmadediospuntocom/elfantasmadedios/contents/assets";
+    const FALLBACK_IMAGES = [
+      "assets/1024px-God_the_Geometer-1-e1492886510838.jpg",
+      "assets/20250919_2359_Cyberpunk Ancient Sentinel_remix_01k5jqrj2ceearyfyjhhghtch4.png",
+      "assets/20250920_0037_Heavenly Clash_remix_01k5jsy0j4eahtsdcsqbfa2rba.png",
+      "assets/20250920_1624_Eden's Corruption Glitch_remix_01k5mg3ta0e1ptexvvrf1cenc4.png",
+      "assets/20250920_1628_Corrupted Eden Vision_remix_01k5mgak5ne4w89fybrtvgh09t.png",
+      "assets/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzbeqhavqkxfrcd2akm (1).png",
+      "assets/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzcfgpsrdpae9j59c94 (1).png",
+      "assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qtevarwcy630xsfbfw.png",
+      "assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qvf7vaq9761drzd2hh.png",
+      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac (1).png",
+      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac.png",
+      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e70eap87vjadyevsvw6.png",
+      "assets/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3mdfb886r609x2a4y2t.png",
+      "assets/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3meer5r13as2n7vx95c.png",
+      "assets/20251202_1247_Divine Mech Creation_simple_compose_01kbg2nstneztr710ackrrfz32.png",
+      "assets/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3pangfxdb1v7bzfd1e19c.png",
+      "assets/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3panhew6tcsz0b66f9xe4.png",
+      "assets/20251202_1312_Divine March of Mechas_simple_compose_01kbg45bc0eb2s0f0tfzp69xka.png",
+      "assets/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y8fygvyp46qw5gy2x6.png",
+      "assets/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y9exzbnehnbsw444jy.png",
+      "assets/4590D0AE-6D87-44B0-97C0-2E9F28EFB06D.jpg",
+      "assets/89B80C1E-DEE4-4A03-AA4E-1CA11A84AF68.jpg",
+      "assets/AE9BAF1F-FF26-46F4-83A5-6F95B2BF7D9F.jpg",
+      "assets/ChatGPT Image Nov 28, 2025, 01_27_25 PM.png",
+      "assets/Screenshot 2025-11-27 at 12.25.30.png",
+      "assets/Screenshot 2025-11-27 at 12.25.38.png",
+      "assets/Screenshot 2025-11-27 at 12.26.02.png",
+      "assets/Screenshot 2025-11-27 at 12.26.21.png",
+      "assets/Screenshot 2025-11-27 at 12.26.33.png"
+    ];
+    let slides = [];
     let galleryIndex = 0;
+    let autoTimer;
+    let progressFrame;
 
-    function updateDots() {
-      if (!galleryDots) return;
+    function formatLabel(src) {
+      const filename = decodeURIComponent((src || "").split("/").pop() || "");
+      return filename.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim() || "Visión";
+    }
+
+    function updateCounter() {
+      if (galleryCounter && slides.length) {
+        galleryCounter.textContent = `${String(galleryIndex + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+      }
+    }
+
+    function animateDot() {
+      cancelAnimationFrame(progressFrame);
+      const dots = Array.from(galleryDots?.children || []);
+      const activeDot = dots[galleryIndex];
+      if (!activeDot || slides.length < 2) return;
+      const startedAt = performance.now();
+      const duration = AUTO_DELAY;
+
+      const step = (now) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        activeDot.style.setProperty("--fill", `${Math.round(progress * 100)}%`);
+        if (progress < 1) {
+          progressFrame = requestAnimationFrame(step);
+        }
+      };
+
+      activeDot.style.setProperty("--fill", "0%");
+      progressFrame = requestAnimationFrame(step);
+    }
+
+    function restartAuto() {
+      clearInterval(autoTimer);
+      if (slides.length < 2) return;
+      autoTimer = window.setInterval(() => activateSlide(galleryIndex + 1), AUTO_DELAY);
+    }
+
+    function activateSlide(nextIndex) {
+      if (!slides.length) return;
+      galleryIndex = (nextIndex + slides.length) % slides.length;
+      const dots = Array.from(galleryDots?.children || []);
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("active", idx === galleryIndex);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === galleryIndex);
+        if (idx !== galleryIndex) dot.style.setProperty("--fill", "0%");
+      });
+      updateCounter();
+      restartAuto();
+      animateDot();
+    }
+
+    async function fetchGithubAssets() {
+      try {
+        const response = await fetch(GITHUB_ASSET_ENDPOINT, {
+          headers: { Accept: "application/vnd.github.v3+json" }
+        });
+        if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
+        const payload = await response.json();
+        const images = payload
+          .filter((item) => item.type === "file" && /\.(png|jpe?g|gif|webp)$/i.test(item.name))
+          .map((item) => item.download_url || item.path || item.name)
+          .sort((a, b) => a.localeCompare(b));
+        return images;
+      } catch (error) {
+        console.warn("Galería: usando lista local", error);
+        return [];
+      }
+    }
+
+    async function fetchLocalListing() {
+      try {
+        const response = await fetch("assets/");
+        if (!response.ok) return [];
+        const contentType = response.headers.get("content-type") || "";
+        if (!contentType.includes("text/html")) return [];
+        const html = await response.text();
+        const matches = [...html.matchAll(/href="([^"]+\.(?:png|jpe?g|gif|webp))"/gi)];
+        const base = new URL(response.url);
+        return matches.map((match) => new URL(match[1], base).pathname);
+      } catch (error) {
+        console.warn("Galería: sin índice local", error);
+        return [];
+      }
+    }
+
+    async function discoverImages() {
+      const viaGithub = await fetchGithubAssets();
+      if (viaGithub.length) return viaGithub;
+      const viaDirectory = await fetchLocalListing();
+      if (viaDirectory.length) return viaDirectory;
+      return FALLBACK_IMAGES;
+    }
+
+    function buildSlides(sources) {
+      if (!galleryStage || !galleryDots) return;
+      galleryStage.innerHTML = "";
       galleryDots.innerHTML = "";
-      gallerySlides.forEach((_, idx) => {
+      slides = sources.map((src, idx) => {
+        const figure = document.createElement("figure");
+        figure.className = "gallery-slide";
+        figure.dataset.label = src;
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = formatLabel(src);
+        img.loading = idx < 2 ? "eager" : "lazy";
+
+        const caption = document.createElement("figcaption");
+        caption.className = "gallery-caption";
+        caption.innerHTML = `<span>${formatLabel(src)}</span>`;
+
+        figure.appendChild(img);
+        figure.appendChild(caption);
+        galleryStage.appendChild(figure);
+
         const dot = document.createElement("button");
-        dot.className = "gallery-dot" + (idx === galleryIndex ? " active" : "");
+        dot.className = "gallery-dot";
         dot.type = "button";
-        dot.addEventListener("click", () => goToSlide(idx));
+        dot.setAttribute("aria-label", `Ir a la imagen ${idx + 1}`);
+        dot.addEventListener("click", () => activateSlide(idx));
         galleryDots.appendChild(dot);
+
+        return figure;
       });
     }
 
-    function goToSlide(index) {
-      if (!galleryTrack || !gallerySlides.length) return;
-      galleryIndex = (index + gallerySlides.length) % gallerySlides.length;
-      const target = gallerySlides[galleryIndex];
-      target?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      updateDots();
+    async function initGallery() {
+      const sources = await discoverImages();
+      if (!sources.length) return;
+      buildSlides(sources);
+      activateSlide(0);
+      btnPrev?.addEventListener("click", () => activateSlide(galleryIndex - 1));
+      btnNext?.addEventListener("click", () => activateSlide(galleryIndex + 1));
     }
 
-    btnPrev?.addEventListener("click", () => goToSlide(galleryIndex - 1));
-    btnNext?.addEventListener("click", () => goToSlide(galleryIndex + 1));
-
-    galleryTrack?.addEventListener("scroll", () => {
-      if (!galleryTrack || !gallerySlides.length) return;
-      const slideWidth = gallerySlides[0].getBoundingClientRect().width;
-      const gap = 14;
-      const idx = Math.round(galleryTrack.scrollLeft / (slideWidth + gap));
-      galleryIndex = Math.min(Math.max(idx, 0), gallerySlides.length - 1);
-      updateDots();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(autoTimer);
+        cancelAnimationFrame(progressFrame);
+      } else {
+        restartAuto();
+        animateDot();
+      }
     });
 
-    if (gallerySlides.length) {
-      updateDots();
-      goToSlide(0);
-    }
+    initGallery();
   </script>
 </body>
 
