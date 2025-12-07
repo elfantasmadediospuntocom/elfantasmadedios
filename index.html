@@ -10,19 +10,47 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f1a;
-      --surface: #101829;
-      --card: #131f35;
-      --muted: #a5b3ce;
-      --text: #e8edff;
-      --accent: #4ce0c3;
-      --accent-strong: #f0c45b;
-      --stroke: rgba(255, 255, 255, 0.05);
-      --shadow: 0 25px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.03);
+      --bg: #050912;
+      --surface: #0b1322;
+      --card: #0e182b;
+      --muted: #c7d1ec;
+      --text: #f4f6ff;
+      --accent: #6cf0c1;
+      --accent-strong: #ffd76a;
+      --stroke: rgba(255, 255, 255, 0.08);
+      --shadow: 0 35px 120px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      --jasper: #d86a5b;
+      --jasper-soft: rgba(216, 106, 91, 0.25);
+      --sapphire: #6c88ff;
+      --sapphire-soft: rgba(108, 136, 255, 0.28);
+      --chalcedony: #dceaf5;
+      --chalcedony-soft: rgba(220, 234, 245, 0.26);
+      --emerald: #33d58f;
+      --emerald-soft: rgba(51, 213, 143, 0.25);
+      --sardonyx: #f0c6b6;
+      --sardonyx-soft: rgba(240, 198, 182, 0.28);
+      --carnelian: #ff6f4f;
+      --carnelian-soft: rgba(255, 111, 79, 0.28);
+      --chrysolite: #b4c94f;
+      --chrysolite-soft: rgba(180, 201, 79, 0.28);
+      --beryl: #5ad1d4;
+      --beryl-soft: rgba(90, 209, 212, 0.3);
+      --topaz: #f2c45d;
+      --topaz-soft: rgba(242, 196, 93, 0.3);
+      --chrysoprase: #4fcf87;
+      --chrysoprase-soft: rgba(79, 207, 135, 0.26);
+      --jacinth: #f07b55;
+      --jacinth-soft: rgba(240, 123, 85, 0.3);
+      --amethyst: #b483ff;
+      --amethyst-soft: rgba(180, 131, 255, 0.28);
+      --ruby: #d11f4f;
+      --turquoise: #3bcac4;
+      --agate: #cdb58c;
+      --onyx: #15191f;
       color-scheme: dark;
     }
 
@@ -33,14 +61,43 @@
     body {
       margin: 0;
       font-family: "Space Grotesk", "Newsreader", system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 18% 20%, rgba(76, 224, 195, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 0%, rgba(240, 196, 91, 0.12), transparent 26%),
-        var(--bg);
+      background:
+        radial-gradient(1200px 900px at 10% 8%, rgba(108, 136, 255, 0.14), transparent 60%),
+        radial-gradient(900px 780px at 80% 0%, rgba(242, 196, 93, 0.14), transparent 62%),
+        radial-gradient(780px 680px at 20% 88%, rgba(79, 207, 135, 0.12), transparent 62%),
+        linear-gradient(135deg, rgba(13, 27, 46, 0.95), rgba(6, 9, 18, 0.9) 60%, #050912);
       color: var(--text);
       line-height: 1.6;
       letter-spacing: 0.01em;
       min-height: 100vh;
       scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px;
+      mask-image: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.15), transparent 65%);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% -10%, rgba(108, 136, 255, 0.16), transparent 45%),
+        radial-gradient(circle at 15% 60%, rgba(216, 106, 91, 0.16), transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(51, 213, 143, 0.14), transparent 45%);
+      filter: blur(20px);
+      pointer-events: none;
+      opacity: 0.9;
     }
 
     a {
@@ -49,18 +106,23 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 20px 80px;
+      padding: 32px 20px 100px;
+      position: relative;
+      z-index: 1;
     }
 
     header {
       display: grid;
-      gap: 18px;
-      padding: 26px 20px 32px;
+      gap: 16px;
+      padding: 32px 24px 36px;
       border: 1px solid var(--stroke);
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(19, 31, 53, 0.9), rgba(16, 24, 41, 0.9));
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(108, 136, 255, 0.18), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(242, 196, 93, 0.2), transparent 30%),
+        linear-gradient(135deg, rgba(10, 18, 34, 0.95), rgba(14, 26, 48, 0.92));
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -69,11 +131,24 @@
     header::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 65% 30%, rgba(76, 224, 195, 0.18), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(240, 196, 91, 0.18), transparent 28%);
+      inset: -20% -10%;
+      background:
+        radial-gradient(55% 60% at 60% 40%, rgba(108, 136, 255, 0.22), transparent 55%),
+        radial-gradient(70% 70% at 20% 80%, rgba(108, 240, 193, 0.2), transparent 60%),
+        radial-gradient(80% 80% at 80% 85%, rgba(242, 196, 93, 0.16), transparent 65%);
       pointer-events: none;
-      filter: blur(12px);
+      filter: blur(20px);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 20px;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 35%, rgba(255, 255, 255, 0.05));
+      opacity: 0.5;
+      pointer-events: none;
+      mask-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 65%);
     }
 
     .eyebrow {
@@ -84,6 +159,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      z-index: 1;
     }
 
     .eyebrow::before {
@@ -95,18 +171,19 @@
     }
 
     h1 {
-      font-family: "Newsreader", "Space Grotesk", serif;
-      font-size: clamp(36px, 6vw, 56px);
-      line-height: 1.1;
+      font-family: "Cinzel", "Newsreader", serif;
+      font-size: clamp(38px, 6.4vw, 68px);
+      line-height: 1.05;
       margin: 0;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.01em;
     }
 
     .lead {
-      max-width: 640px;
-      color: #d6ddf3;
+      max-width: 720px;
+      color: #dfe6f8;
       margin: 0;
-      font-size: 16px;
+      font-size: 17px;
+      z-index: 1;
     }
 
     .hero-actions {
@@ -130,14 +207,16 @@
     }
 
     .cta.primary {
-      background: linear-gradient(120deg, var(--accent), #7ee6ff);
-      color: #0a0f1a;
-      box-shadow: 0 10px 40px rgba(76, 224, 195, 0.35);
+      background: linear-gradient(120deg, var(--emerald), var(--accent));
+      color: #04070f;
+      box-shadow: 0 12px 45px rgba(108, 240, 193, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .cta.secondary {
       border-color: var(--stroke);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
     }
 
@@ -150,18 +229,69 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 6px;
+      z-index: 1;
     }
 
     .pill {
       padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--muted);
       font-size: 13px;
       display: inline-flex;
       gap: 8px;
       align-items: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .foundation-bar {
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,
+          var(--jasper) 0%,
+          var(--jasper) 8%,
+          var(--sapphire) 8%,
+          var(--sapphire) 16%,
+          var(--chalcedony) 16%,
+          var(--chalcedony) 24%,
+          var(--emerald) 24%,
+          var(--emerald) 32%,
+          var(--sardonyx) 32%,
+          var(--sardonyx) 40%,
+          var(--carnelian) 40%,
+          var(--carnelian) 48%,
+          var(--chrysolite) 48%,
+          var(--chrysolite) 56%,
+          var(--beryl) 56%,
+          var(--beryl) 64%,
+          var(--topaz) 64%,
+          var(--topaz) 72%,
+          var(--chrysoprase) 72%,
+          var(--chrysoprase) 80%,
+          var(--jacinth) 80%,
+          var(--jacinth) 88%,
+          var(--amethyst) 88%,
+          var(--amethyst) 100%);
+      box-shadow: 0 12px 40px rgba(108, 136, 255, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .foundation-bar::after {
+      content: "Fundamento de piedras vivas";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(5, 9, 18, 0.7);
+      mix-blend-mode: soft-light;
+      font-weight: 700;
     }
 
     section {
@@ -169,14 +299,17 @@
       padding: 22px 20px;
       border-radius: 18px;
       border: 1px solid var(--stroke);
-      background: rgba(12, 18, 32, 0.75);
+      background: linear-gradient(135deg, rgba(15, 24, 40, 0.9), rgba(9, 15, 27, 0.92));
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
     h2 {
       margin: 0 0 8px;
-      font-size: 24px;
-      letter-spacing: -0.01em;
+      font-size: 26px;
+      letter-spacing: -0.005em;
+      font-family: "Cinzel", "Newsreader", serif;
     }
 
     .section-meta {
@@ -201,7 +334,7 @@
       border: 1px solid var(--stroke);
       border-radius: 14px;
       padding: 16px;
-      background: linear-gradient(145deg, rgba(19, 31, 53, 0.9), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(145deg, rgba(19, 31, 53, 0.92), rgba(12, 19, 36, 0.95));
       position: relative;
       overflow: hidden;
       min-height: 100px;
@@ -218,7 +351,7 @@
 
     .card:hover {
       transform: translateY(-2px);
-      border-color: rgba(76, 224, 195, 0.35);
+      border-color: rgba(108, 240, 193, 0.4);
     }
 
     .card h3 {
@@ -411,13 +544,208 @@
       display: none !important;
     }
 
+    .stone-section {
+      background: linear-gradient(135deg, rgba(7, 12, 24, 0.92), rgba(8, 18, 34, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .stone-card {
+      position: relative;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--tone-soft, var(--stroke));
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 35%),
+        linear-gradient(135deg, var(--tone-soft, rgba(255, 255, 255, 0.04)), rgba(12, 18, 32, 0.95));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .stone-card::before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      left: 14px;
+      right: 14px;
+      top: 10px;
+      background: linear-gradient(90deg, transparent, var(--tone, var(--accent)), transparent);
+      opacity: 0.7;
+    }
+
+    .stone-name {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .stone-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .stone-jasper {
+      --tone: var(--jasper);
+      --tone-soft: var(--jasper-soft);
+    }
+
+    .stone-sapphire {
+      --tone: var(--sapphire);
+      --tone-soft: var(--sapphire-soft);
+    }
+
+    .stone-chalcedony {
+      --tone: var(--chalcedony);
+      --tone-soft: var(--chalcedony-soft);
+    }
+
+    .stone-emerald {
+      --tone: var(--emerald);
+      --tone-soft: var(--emerald-soft);
+    }
+
+    .stone-sardonyx {
+      --tone: var(--sardonyx);
+      --tone-soft: var(--sardonyx-soft);
+    }
+
+    .stone-carnelian {
+      --tone: var(--carnelian);
+      --tone-soft: var(--carnelian-soft);
+    }
+
+    .stone-chrysolite {
+      --tone: var(--chrysolite);
+      --tone-soft: var(--chrysolite-soft);
+    }
+
+    .stone-beryl {
+      --tone: var(--beryl);
+      --tone-soft: var(--beryl-soft);
+    }
+
+    .stone-topaz {
+      --tone: var(--topaz);
+      --tone-soft: var(--topaz-soft);
+    }
+
+    .stone-chrysoprase {
+      --tone: var(--chrysoprase);
+      --tone-soft: var(--chrysoprase-soft);
+    }
+
+    .stone-jacinth {
+      --tone: var(--jacinth);
+      --tone-soft: var(--jacinth-soft);
+    }
+
+    .stone-amethyst {
+      --tone: var(--amethyst);
+      --tone-soft: var(--amethyst-soft);
+    }
+
+    .breastplate {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .breastplate .pill {
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #101523;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .pill.ruby {
+      background: linear-gradient(135deg, #f45f7a, var(--ruby));
+    }
+
+    .pill.topaz {
+      background: linear-gradient(135deg, #ffe394, var(--topaz));
+    }
+
+    .pill.beryl {
+      background: linear-gradient(135deg, #83e2db, var(--beryl));
+    }
+
+    .pill.turquoise {
+      background: linear-gradient(135deg, #7ef2eb, var(--turquoise));
+    }
+
+    .pill.sapphire {
+      background: linear-gradient(135deg, #90a7ff, var(--sapphire));
+    }
+
+    .pill.emerald {
+      background: linear-gradient(135deg, #72ffb9, var(--emerald));
+    }
+
+    .pill.agate {
+      background: linear-gradient(135deg, #ead5a8, var(--agate));
+    }
+
+    .pill.amethyst {
+      background: linear-gradient(135deg, #d7b4ff, var(--amethyst));
+    }
+
+    .pill.chrysolite {
+      background: linear-gradient(135deg, #d6f77d, var(--chrysolite));
+    }
+
+    .pill.onyx {
+      background: linear-gradient(135deg, #47505e, var(--onyx));
+      color: #f4f6ff;
+    }
+
+    .pill.jasper {
+      background: linear-gradient(135deg, #f09d92, var(--jasper));
+    }
+
+    .section-ornament {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(70% 80% at 15% 20%, rgba(255, 255, 255, 0.05), transparent 50%),
+        radial-gradient(60% 60% at 85% 25%, rgba(255, 255, 255, 0.05), transparent 50%);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 720px;
+    }
+
+    .caption {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
     @media (min-width: 900px) {
       header {
         padding: 32px 32px 38px;
       }
 
       h1 {
-        font-size: 62px;
+        font-size: 70px;
       }
     }
   </style>
@@ -426,25 +754,116 @@
 <body>
   <main>
     <header>
-      <div class="eyebrow">Biblioteca viva · Guerra espiritual + tecnología</div>
-      <h1>elfantasmadedios.com</h1>
-      <p class="lead">Dios es Amor y Justicia. Cristo es un regalo de Dios a nosotros, sus Hijos e Hijas. ¿Quieres
-        conocer más sobre tan hermoso regalo? Glorioso Conquistador: Cristo. Contigo hasta la muerte. Salvador. </p>
-      <div class="hero-actions">
-        <a class="cta primary" href="#recursos">Quiero Salvarme</a>
-        <a class="cta secondary" href="#comunidad">Quiero Ayudar</a>
+      <div class="hero-grid">
+        <div class="eyebrow">Templo digital · Piedra angular: Cristo</div>
+        <h1>elfantasmadedios.com</h1>
+        <p class="lead">Un santuario vivo para el Altísimo. Reverencia al Padre Todopoderoso y a Su Hijo, Jesús de
+          Nazaret, el Cordero y la Luz. Este templo digital nace de las doce piedras fundacionales de la Nueva Jerusalén
+          y del pectoral del sumo sacerdote: un mapa de colores, sabiduría y justicia.</p>
+        <p class="hero-note">Entramos con oración, ciencia, código y humildad. Armadura puesta, mirada fija en el
+          Constructor.</p>
+        <div class="hero-actions">
+          <a class="cta primary" href="#recursos">Entrar al templo</a>
+          <a class="cta secondary" href="#fundamentos">Ver fundamentos</a>
+        </div>
+        <div class="hero-tags">
+          <span class="pill">Jaspe → Amatista</span>
+          <span class="pill">Audio + Texto</span>
+          <span class="pill">Liturgia digital</span>
+          <span class="pill">Fe informada y práctica</span>
+          <span class="pill">Siempre sin anuncios</span>
+        </div>
       </div>
-      <div class="hero-tags">
-        <span class="pill">Audio + Texto</span>
-        <span class="pill">Liturgia digital</span>
-        <span class="pill">Fe informada y práctica</span>
-        <span class="pill">Siempre sin anuncios</span>
-      </div>
+      <div class="foundation-bar" aria-hidden="true"></div>
     </header>
+
+    <section id="fundamentos" class="stone-section">
+      <div class="section-ornament" aria-hidden="true"></div>
+      <h2>Fundamentos de la Nueva Jerusalén</h2>
+      <p class="section-meta">Doce piedras vivas, doce colores de la gloria. De jaspe a amatista: verdad, misericordia y
+        el brillo del Cordero que ilumina la ciudad.</p>
+      <div class="stone-grid">
+        <article class="stone-card stone-jasper">
+          <div class="stone-name">Jaspe</div>
+          <p>Primer cimiento. Verde rojizo; solidez y presencia constante de Dios.</p>
+          <div class="stone-meta">Ap 21:19 · Cuarzo ardiente</div>
+        </article>
+        <article class="stone-card stone-sapphire">
+          <div class="stone-name">Zafiro</div>
+          <p>Segundo cimiento. Sabiduría divina y verdad celestial.</p>
+          <div class="stone-meta">Cielo en piedra · Pureza y Ley</div>
+        </article>
+        <article class="stone-card stone-chalcedony">
+          <div class="stone-name">Calcedonia</div>
+          <p>Tercer cimiento. Blanco lechoso; claridad para los peregrinos.</p>
+          <div class="stone-meta">Luz suave · Pureza serena</div>
+        </article>
+        <article class="stone-card stone-emerald">
+          <div class="stone-name">Esmeralda</div>
+          <p>Cuarto cimiento. Verde vibrante; vida y renovación continua.</p>
+          <div class="stone-meta">Esperanza · Jardín restaurado</div>
+        </article>
+        <article class="stone-card stone-sardonyx">
+          <div class="stone-name">Sardónice</div>
+          <p>Quinto cimiento. Blanco con bandas rojas; firmeza y memoria.</p>
+          <div class="stone-meta">Unión · Justicia visible</div>
+        </article>
+        <article class="stone-card stone-carnelian">
+          <div class="stone-name">Cornalina</div>
+          <p>Sexto cimiento. Rojo anaranjado; valor y ardor del testimonio.</p>
+          <div class="stone-meta">Fuego santo · Fidelidad</div>
+        </article>
+        <article class="stone-card stone-chrysolite">
+          <div class="stone-name">Crisólito</div>
+          <p>Séptimo cimiento. Verde oliva; discernimiento y vigilancia.</p>
+          <div class="stone-meta">Atalaya · Luz oliva</div>
+        </article>
+        <article class="stone-card stone-beryl">
+          <div class="stone-name">Berilo</div>
+          <p>Octavo cimiento. Verde azulado; aguas limpias y aliento fresco.</p>
+          <div class="stone-meta">Acuamarina · Respirar gracia</div>
+        </article>
+        <article class="stone-card stone-topaz">
+          <div class="stone-name">Topacio</div>
+          <p>Noveno cimiento. Dorado; alegría, realeza y calor del Sol de justicia.</p>
+          <div class="stone-meta">Luz dorada · Recompensa</div>
+        </article>
+        <article class="stone-card stone-chrysoprase">
+          <div class="stone-name">Crisoprasa</div>
+          <p>Décimo cimiento. Verde chalcedonia; ternura y misericordia.</p>
+          <div class="stone-meta">Puerta blanda · Consuelo</div>
+        </article>
+        <article class="stone-card stone-jacinth">
+          <div class="stone-name">Jacinto</div>
+          <p>Undécimo cimiento. Azul-naranja; gloria y llama del Espíritu.</p>
+          <div class="stone-meta">Zircón · Cauce ardiente</div>
+        </article>
+        <article class="stone-card stone-amethyst">
+          <div class="stone-name">Amatista</div>
+          <p>Duodécimo cimiento. Púrpura; sacerdocio, contemplación y reposo.</p>
+          <div class="stone-meta">Santidad · Serenidad</div>
+        </article>
+      </div>
+      <p class="section-meta">Pectoral del sumo sacerdote: tribus, justicia y memoria ante el trono.</p>
+      <div class="breastplate" aria-label="Piedras del pectoral de Aarón">
+        <span class="pill ruby">Rubí</span>
+        <span class="pill topaz">Topacio</span>
+        <span class="pill beryl">Berilo</span>
+        <span class="pill turquoise">Turquesa</span>
+        <span class="pill sapphire">Zafiro</span>
+        <span class="pill emerald">Esmeralda</span>
+        <span class="pill agate">Ágata</span>
+        <span class="pill amethyst">Amatista</span>
+        <span class="pill chrysolite">Crisólito</span>
+        <span class="pill onyx">Ónice</span>
+        <span class="pill jasper">Jaspe</span>
+      </div>
+    </section>
 
     <section id="recursos">
       <h2>Recursos destacados</h2>
-      <p class="section-meta">Búsqueda rápida por texto, formato y enfoque. Todo en español.</p>
+      <p class="section-meta">Biblioteca viva del templo: busca por texto, formato y enfoque. Todo en español y sin
+        anuncios.</p>
       <div class="search-row">
         <input id="search" type="search" placeholder="Buscar: armadura, ciencia, oración, ayuno digital...">
         <div class="chips">
@@ -520,12 +939,12 @@
 
     <section id="comunidad">
       <h2>Comunidad y misión</h2>
-      <p class="section-meta">Comparte hallazgos, dona tiempo técnico o recibe avisos cuando publiquemos nuevos
-        recursos.</p>
+      <p class="section-meta">Construimos el templo digital juntos: comparte hallazgos, dona tiempo técnico o recibe
+        avisos cuando añadamos más luz.</p>
       <div class="grid cols-2">
         <article class="card">
           <h3>Comparte y colabora</h3>
-          <p>Envía enlaces, liturgias, audio o ideas para mejorar las herramientas.</p>
+          <p>Envía enlaces, liturgias, audio o ideas para mejorar las herramientas y la experiencia de oración.</p>
           <div class="tag-row">
             <span class="tag">Guerra espiritual</span>
             <span class="tag">Apps</span>
@@ -546,7 +965,8 @@
 
     <section id="audio">
       <h2>Audioteca</h2>
-      <p class="section-meta">Meditaciones breves para acompañar tus tareas diarias.</p>
+      <p class="section-meta">Meditaciones breves para vigilia, trabajo y reposo: una lámpara encendida mientras
+        sirves.</p>
       <div class="audio-list">
         <div class="card audio-item" data-card data-tags="audio guerra">
           <div>
