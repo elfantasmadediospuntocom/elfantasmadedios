@@ -960,37 +960,37 @@
     const galleryCounter = document.getElementById("galleryCounter");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const AUTO_DELAY = prefersReducedMotion ? 11000 : 7200;
-    const GITHUB_ASSET_ENDPOINT = "https://api.github.com/repos/elfantasmadediospuntocom/elfantasmadedios/contents/assets";
+    const GITHUB_ASSET_ENDPOINT = "https://api.github.com/repos/elfantasmadediospuntocom/elfantasmadedios/contents/assets/pictures";
     const FALLBACK_IMAGES = [
-      "assets/1024px-God_the_Geometer-1-e1492886510838.jpg",
-      "assets/20250919_2359_Cyberpunk Ancient Sentinel_remix_01k5jqrj2ceearyfyjhhghtch4.png",
-      "assets/20250920_0037_Heavenly Clash_remix_01k5jsy0j4eahtsdcsqbfa2rba.png",
-      "assets/20250920_1624_Eden's Corruption Glitch_remix_01k5mg3ta0e1ptexvvrf1cenc4.png",
-      "assets/20250920_1628_Corrupted Eden Vision_remix_01k5mgak5ne4w89fybrtvgh09t.png",
-      "assets/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzbeqhavqkxfrcd2akm (1).png",
-      "assets/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzcfgpsrdpae9j59c94 (1).png",
-      "assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qtevarwcy630xsfbfw.png",
-      "assets/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qvf7vaq9761drzd2hh.png",
-      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac (1).png",
-      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac.png",
-      "assets/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e70eap87vjadyevsvw6.png",
-      "assets/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3mdfb886r609x2a4y2t.png",
-      "assets/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3meer5r13as2n7vx95c.png",
-      "assets/20251202_1247_Divine Mech Creation_simple_compose_01kbg2nstneztr710ackrrfz32.png",
-      "assets/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3pangfxdb1v7bzfd1e19c.png",
-      "assets/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3panhew6tcsz0b66f9xe4.png",
-      "assets/20251202_1312_Divine March of Mechas_simple_compose_01kbg45bc0eb2s0f0tfzp69xka.png",
-      "assets/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y8fygvyp46qw5gy2x6.png",
-      "assets/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y9exzbnehnbsw444jy.png",
-      "assets/4590D0AE-6D87-44B0-97C0-2E9F28EFB06D.jpg",
-      "assets/89B80C1E-DEE4-4A03-AA4E-1CA11A84AF68.jpg",
-      "assets/AE9BAF1F-FF26-46F4-83A5-6F95B2BF7D9F.jpg",
-      "assets/ChatGPT Image Nov 28, 2025, 01_27_25 PM.png",
-      "assets/Screenshot 2025-11-27 at 12.25.30.png",
-      "assets/Screenshot 2025-11-27 at 12.25.38.png",
-      "assets/Screenshot 2025-11-27 at 12.26.02.png",
-      "assets/Screenshot 2025-11-27 at 12.26.21.png",
-      "assets/Screenshot 2025-11-27 at 12.26.33.png"
+      "assets/pictures/1024px-God_the_Geometer-1-e1492886510838.jpg",
+      "assets/pictures/20250919_2359_Cyberpunk Ancient Sentinel_remix_01k5jqrj2ceearyfyjhhghtch4.png",
+      "assets/pictures/20250920_0037_Heavenly Clash_remix_01k5jsy0j4eahtsdcsqbfa2rba.png",
+      "assets/pictures/20250920_1624_Eden's Corruption Glitch_remix_01k5mg3ta0e1ptexvvrf1cenc4.png",
+      "assets/pictures/20250920_1628_Corrupted Eden Vision_remix_01k5mgak5ne4w89fybrtvgh09t.png",
+      "assets/pictures/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzbeqhavqkxfrcd2akm (1).png",
+      "assets/pictures/20251119_2246_Holy Exo-Skeleton_simple_compose_01kafnwhzcfgpsrdpae9j59c94 (1).png",
+      "assets/pictures/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qtevarwcy630xsfbfw.png",
+      "assets/pictures/20251202_1219_Sacred Machine Angel_simple_compose_01kbg137qvf7vaq9761drzd2hh.png",
+      "assets/pictures/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac (1).png",
+      "assets/pictures/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e6zey2v7memf144a9ac.png",
+      "assets/pictures/20251202_1221_Mechanized Seraph Radiance_simple_compose_01kbg19e70eap87vjadyevsvw6.png",
+      "assets/pictures/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3mdfb886r609x2a4y2t.png",
+      "assets/pictures/20251202_1240_Holy Mech Titan_simple_compose_01kbg2a3meer5r13as2n7vx95c.png",
+      "assets/pictures/20251202_1247_Divine Mech Creation_simple_compose_01kbg2nstneztr710ackrrfz32.png",
+      "assets/pictures/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3pangfxdb1v7bzfd1e19c.png",
+      "assets/pictures/20251202_1304_Divine Mecha Descent_simple_compose_01kbg3panhew6tcsz0b66f9xe4.png",
+      "assets/pictures/20251202_1312_Divine March of Mechas_simple_compose_01kbg45bc0eb2s0f0tfzp69xka.png",
+      "assets/pictures/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y8fygvyp46qw5gy2x6.png",
+      "assets/pictures/20251202_1320_War-Mechas in Alien Terrain_simple_compose_01kbg4k9y9exzbnehnbsw444jy.png",
+      "assets/pictures/4590D0AE-6D87-44B0-97C0-2E9F28EFB06D.jpg",
+      "assets/pictures/89B80C1E-DEE4-4A03-AA4E-1CA11A84AF68.jpg",
+      "assets/pictures/AE9BAF1F-FF26-46F4-83A5-6F95B2BF7D9F.jpg",
+      "assets/pictures/ChatGPT Image Nov 28, 2025, 01_27_25 PM.png",
+      "assets/pictures/Screenshot 2025-11-27 at 12.25.30.png",
+      "assets/pictures/Screenshot 2025-11-27 at 12.25.38.png",
+      "assets/pictures/Screenshot 2025-11-27 at 12.26.02.png",
+      "assets/pictures/Screenshot 2025-11-27 at 12.26.21.png",
+      "assets/pictures/Screenshot 2025-11-27 at 12.26.33.png"
     ];
     let slides = [];
     let galleryIndex = 0;
@@ -1043,7 +1043,7 @@
 
     async function fetchLocalListing() {
       try {
-        const response = await fetch("assets/");
+        const response = await fetch("assets/pictures/");
         if (!response.ok) return [];
         const contentType = response.headers.get("content-type") || "";
         if (!contentType.includes("text/html")) return [];

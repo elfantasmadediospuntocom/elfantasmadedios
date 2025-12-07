@@ -328,9 +328,16 @@
     </header>
 
     <section>
-      <h2>Título</h2>
-      <p class="muted">Escribe el texto que quieras mostrar y sube el .txt a <code>assets/textos/</code>. Pega también
-        el enlace de descarga.</p>
+      <h2>Recursos Descargables</h2>
+      <p class="muted">Coloca tus archivos (PDF, DOC o TXT) en <code>assets/text/</code> y agrega el enlace en el
+        arreglo para que aparezcan aquí.</p>
+      <div class="resource-grid" id="resourceGrid"></div>
+    </section>
+
+    <section>
+      <h2>Textos de batalla</h2>
+      <p class="muted">Escribe el texto que quieras mostrar y sube el .txt a <code>assets/text/</code>. Pega también el
+        enlace de descarga.</p>
       <div class="text-grid" id="textGrid"></div>
     </section>
   </main>
@@ -340,14 +347,14 @@
     const textGrid = document.getElementById("textGrid");
 
     const downloads = [
-      // Ejemplo: { title: "Oración de Cobertura", description: "Protégete antes de cada misión.", href: "assets/descargas/oracion_cobertura.pdf" },
-      // Ejemplo: { title: "Manual de Guerra Digital", description: "Lineamientos tácticos para evangelismo online.", href: "assets/descargas/manual_guerra_digital.pdf" },
-      { title: "En breve", description: "Añade tus PDFs a assets/descargas y enlázalos aquí.", href: "" }
+      // Ejemplo: { title: "Oración de Cobertura", description: "Protégete antes de cada misión.", href: "assets/text/oracion_cobertura.pdf" },
+      // Ejemplo: { title: "Manual de Guerra Digital", description: "Lineamientos tácticos para evangelismo online.", href: "assets/text/manual_guerra_digital.pdf" },
+      { title: "En breve", description: "Añade tus PDFs o DOC/TXT a assets/text y enlázalos aquí.", href: "" }
     ];
 
     const texts = [
-      // Ejemplo: { title: "Ataques Durante el Sueño", description: "Guía rápida para cortar pesadillas y opresión nocturna.", body: "Pega aquí el texto que quieras mostrar.\n\nMantén los párrafos separados por líneas en blanco para mejor lectura.", href: "assets/textos/ataques_durante_el_sueno.txt" },
-      { title: "Pronto", description: "Añade tus .txt a assets/textos y pega el cuerpo y el enlace aquí.", body: "Pega aquí tu texto completo.", href: "" }
+      // Ejemplo: { title: "Ataques Durante el Sueño", description: "Guía rápida para cortar pesadillas y opresión nocturna.", body: "Pega aquí el texto que quieras mostrar.\n\nMantén los párrafos separados por líneas en blanco para mejor lectura.", href: "assets/text/ataques_durante_el_sueno.txt" },
+      { title: "Pronto", description: "Añade tus .txt a assets/text y pega el cuerpo y el enlace aquí.", body: "Pega aquí tu texto completo.", href: "" }
     ];
 
     function renderDownloads(list) {
