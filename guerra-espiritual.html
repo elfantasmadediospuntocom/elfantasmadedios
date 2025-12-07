@@ -329,8 +329,7 @@
 
     <section>
       <h2>Recursos Descargables</h2>
-      <p class="muted">Escribe el texto que quieras mostrar y sube el .txt a <code>assets/text/</code>. Pega también el
-        enlace de descarga.</p>
+      <p class="muted">Toda la información es de libre acceso. Con Cristo. Hasta la muerte.</p>
       <div class="text-grid" id="textGrid"></div>
     </section>
   </main>
@@ -398,7 +397,7 @@ AMÉN.
           <h3>${item.title}</h3>
           <p class="muted">${item.description}</p>
           <div class="text-body">${(item.body || "").replace(/\n/g, "<br>")}</div>
-          <a class="download ${hasLink ? "" : "disabled"}" ${hasLink ? `href="${item.href}" download` : ""}>${hasLink ? "Descargar .txt" : "Sube el archivo .txt"}</a>
+          <a class="download ${hasLink ? "" : "disabled"}" ${hasLink ? `href="${item.href}" download` : ""}>${hasLink ? "Descargar" : "Sube el archivo .txt"}</a>
         `;
         textGrid.appendChild(card);
       });
